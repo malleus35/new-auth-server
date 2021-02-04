@@ -7,13 +7,13 @@ class AuthDBManager extends DBManager {
     private constructor() {
         super();
         this.connection = new Sequelize(
-            process.env.DATABASE || "postgres",
-            process.env.DB_USERNAME || "postgres",
+            process.env.DATABASE,
+            process.env.DB_USERNAME,
             process.env.DB_PASSWORD,
             {
                 host: process.env.DB_HOST,
                 port: process.env.DB_PORT,
-                dialect: "postgres",
+                dialect: "mysql",
                 pool: {
                     max: 20,
                     min: 5,

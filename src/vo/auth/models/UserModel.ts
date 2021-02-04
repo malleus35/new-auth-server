@@ -15,23 +15,26 @@ export namespace UserModelTypes {
         allowNull: boolean;
         primaryKey?: boolean;
         validate?: ModelValidateOptions;
+        unique?: boolean;
     }
     export interface IUserScheme extends ModelAttributes {
-        email: IColumnOption;
+        id: IColumnOption;
         name: IColumnOption;
         pwd: IColumnOption;
-        // grade: IColumnOption;
-        // school: IColumnOption;
-        stdNum: IColumnOption;
     }
     export const attr: UserModelTypes.IUserScheme = {
-        email: {
-            type: DataTypes.STRING,
+        idx: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
+            autoIncrement: true
+        },
+        id: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
             validate: {
-                notEmpty: true,
-                isEmail: true
+                notEmpty: true
             }
         },
         name: {
@@ -46,25 +49,6 @@ export namespace UserModelTypes {
             allowNull: false,
             validate: {
                 notEmpty: true
-            }
-        },
-        // grade: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false
-        // },
-        // school: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true
-        //     }
-        // },
-        stdNum: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-                isNumeric: true
             }
         }
     };
