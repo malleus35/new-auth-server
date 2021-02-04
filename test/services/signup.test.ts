@@ -7,7 +7,7 @@ import UserModel from "@src/models/UserModel";
 describe("make server and test signup request", () => {
     const logger = LogService.getInstance();
     it.skip("200 OK and sign POST /signup ", async (done) => {
-        const db = new AuthDBManager();
+        const db = AuthDBManager.getInstance();
         UserModel.initiate(db.getConnection());
         await UserModel.sync();
         request(app)
@@ -52,7 +52,7 @@ describe("make server and test signup request", () => {
     });
 
     it("409 Already Existed User POST /signup", async (done) => {
-        const db = new AuthDBManager();
+        const db = AuthDBManager.getInstance();
         UserModel.initiate(db.getConnection());
         const newUser = await UserModel.create({
             name: "junghun yang",

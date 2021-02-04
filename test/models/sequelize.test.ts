@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import LogService from "@src/utils/LogService";
-import env from "@src/utils/Dotenv";
+import env from "@src/utils/env";
 import AuthDBManager from "@src/models/AuthDBManager";
 import UserModel from "@src/models/UserModel";
 import { UserModelTypes } from "@src/vo/auth/models/UserModel";

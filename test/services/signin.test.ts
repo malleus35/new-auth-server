@@ -13,7 +13,7 @@ import { promisify } from "util";
 const logger = LogService.getInstance();
 describe("make server and test login request", () => {
     it("200 OK POST /signin", async (done) => {
-        const db = new AuthDBManager();
+        const db = AuthDBManager.getInstance();
         UserModel.initiate(db.getConnection());
         const testdata = {
             name: "junghun yang",

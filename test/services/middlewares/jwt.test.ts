@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import env from "@src/utils/Dotenv";
+import env from "@src/utils/env";
 import LogService from "@src/utils/LogService";
 const logger = LogService.getInstance();
 
@@ -28,7 +28,7 @@ describe("json webtoken test", () => {
         };
         let createToken = jwt.sign(payload, secretKey, options);
         const decoded = jwt.verify(createToken, secretKey);
-        logger.info(decoded.foo);
+        logger.info(decoded);
         expect(decoded.foo).toEqual("bar");
         expect(mJwtVerify).toBeCalledTimes(1);
         expect(mJwtVerify).toBeCalledWith(createToken, secretKey);
