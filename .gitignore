@@ -16,4 +16,8 @@ yarn.lock
 envs/
 config/
 
+# kubernetes
+/kube
+kube/*
+
 Untitled.code-workspace
