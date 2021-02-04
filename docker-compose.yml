@@ -3,44 +3,25 @@ services:
     auth-server:
         build: .
         ports:
-            - "8081:8080"
+            - "8080:8080"
         env_file:
             - ./envs/.env.production
         networks:
             - auth
-            - default
-
-    auth-postgres:
-        image: "postgres"
-        ports:
-            - "5433:5432"
-        env_file:
-            - ../.db.auth.docker.env
-        volumes:
-            - "auth_postgres_data:/var/lib/postgresql/data"
-        networks:
-            - auth
-            - default
 
     auth-redis:
         image: "redis:alpine"
         ports:
-            - "6380:6379"
+            - "6379:6379"
         volumes:
             - "auth_redis_data:/data"
         networks:
             - auth
-            - default
 
 networks:
-    default:
-        external:
-            name: message-q
-        driver: bridge
     auth:
         external: true
         driver: bridge
 
 volumes:
-    auth_postgres_data:
     auth_redis_data:
