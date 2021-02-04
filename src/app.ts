@@ -26,7 +26,7 @@ const init = new InitController().excute()();
 // const kafkaInit = new KafkaController().excute()();
 app.use("/api", apiRouter);
 if (process.env.NODE_ENV !== "test")
-    app.listen(Number(process.env.SERVER_PORT) || 3000, "localhost");
+    app.listen(Number(process.env.SERVER_PORT) || 3000, "127.0.0.1");
 
 logger.info(
     `Server is running on localhost ${process.env.SERVER_PORT || 3000}!`
