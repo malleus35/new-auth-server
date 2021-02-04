@@ -3,7 +3,7 @@ import { UserModelTypes } from "@src/vo/auth/models/UserModel";
 import { SignUpTypes } from "@src/vo/auth/controllers/Signup";
 
 interface UserCreationAttributes
-    extends Optional<SignUpTypes.SignUpBody, "idx"> {}
+    extends Optional<SignUpTypes.SignUpBody, "user_idx"> {}
 class User
     // extends Model<SignUpTypes.SignUpBody, UserCreationAttributes>
     extends Model

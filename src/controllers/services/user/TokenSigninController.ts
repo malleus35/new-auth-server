@@ -21,7 +21,7 @@ class TokenSigninController extends Controller {
         next: NextFunction
     ): Promise<void> {
         try {
-            this.decodedPayload = req.decoded.idx;
+            this.decodedPayload = req.decoded.user_idx;
             this.accessToken = await JwtService.createAccessToken(
                 this.decodedPayload
             );

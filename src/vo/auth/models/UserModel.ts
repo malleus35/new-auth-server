@@ -18,18 +18,19 @@ export namespace UserModelTypes {
         unique?: boolean;
     }
     export interface IUserScheme extends ModelAttributes {
-        id: IColumnOption;
-        name: IColumnOption;
-        pwd: IColumnOption;
+        user_id: IColumnOption;
+        nickname: IColumnOption;
+        password: IColumnOption;
+        level: IColumnOption;
     }
     export const attr: UserModelTypes.IUserScheme = {
-        idx: {
+        user_idx: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        id: {
+        user_id: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
@@ -37,18 +38,25 @@ export namespace UserModelTypes {
                 notEmpty: true
             }
         },
-        name: {
+        nickname: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true
             }
         },
-        pwd: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true
+            }
+        },
+        level: {
+            type: DataTypes.TINYINT,
+            allowNull: true,
+            validate: {
+                notEmpty: false
             }
         }
     };
