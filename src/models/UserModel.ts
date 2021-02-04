@@ -8,10 +8,11 @@ class User
     // extends Model<SignUpTypes.SignUpBody, UserCreationAttributes>
     extends Model
     implements SignUpTypes.SignUpBody {
-    public idx!: number;
-    public id!: string;
-    public name!: string;
-    public pwd!: string;
+    public user_idx!: number;
+    public user_id!: string;
+    public nickname!: string;
+    public password!: string;
+    public level!: number;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
     static initiate(connection: Sequelize): Model {

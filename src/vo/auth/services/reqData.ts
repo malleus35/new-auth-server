@@ -2,7 +2,7 @@ interface data {
     [attr: string]: any;
 }
 interface decoded {
-    idx?: number;
+    user_idx?: number;
 }
 interface params {
     [attr: string]: any;

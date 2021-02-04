@@ -47,7 +47,7 @@ class JwtVerifyRefreshController extends Controller {
             typeof this.decode !== "string"
         ) {
             const refreshToken = await TokenDao.getInstance().find(
-                this.decode.idx
+                this.decode.user_idx
             );
             if (refreshToken !== req.headers.refresh) {
                 this.verify = "TokenError";
@@ -55,10 +55,10 @@ class JwtVerifyRefreshController extends Controller {
             } else {
                 this.newRefreshToken = await JwtService.createRefreshToken();
                 this.newAccessToken = await JwtService.createAccessToken(
-                    this.decode.idx
+                    this.decode.user_idx
                 );
                 await TokenDao.getInstance().save(
-                    this.decode.idx,
+                    this.decode.user_idx,
                     this.newRefreshToken
                 );
             }

@@ -32,7 +32,7 @@ class LogoutController extends Controller {
         try {
             this.result.findInfo = await UserService.findMyInfo(req);
             this.result.removeResult = await TokenDao.getInstance().remove(
-                req.decoded.idx
+                req.decoded.user_idx
             );
         } catch (e: unknown) {
             this.result.findInfo = "InternalServerError";

@@ -1,8 +1,9 @@
 export namespace SignUpTypes {
     export interface SignUpBody {
-        idx: number;
-        id: string;
-        pwd: string;
-        name: string;
+        user_idx: number;
+        user_id: string;
+        password: string;
+        nickname: string;
+        level: number;
     }
 }

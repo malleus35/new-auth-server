@@ -35,8 +35,10 @@ const serviceReturn = {
                     return "CannotFindItem";
                 default:
                     if (
-                        (await argon2.verify(result.pwd, reqData.data?.pwd)) ===
-                        false
+                        (await argon2.verify(
+                            result.password,
+                            reqData.data?.password
+                        )) === false
                     )
                         return "WrongPassword";
                     else return result;

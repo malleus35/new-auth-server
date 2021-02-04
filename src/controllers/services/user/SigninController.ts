@@ -29,15 +29,15 @@ class SigninController extends Controller {
             this.result = await UserService.findSignIn(req);
             if (typeof this.result !== "string") {
                 this.accessToken = await JwtService.createAccessToken(
-                    this.result.idx
+                    this.result.user_idx
                 );
                 this.refreshToken = await JwtService.createRefreshToken();
 
                 await TokenDao.getInstance().save(
-                    this.result.idx,
+                    this.result.user_idx,
                     this.refreshToken
                 );
-                await TokenDao.getInstance().find(this.result.idx);
+                await TokenDao.getInstance().find(this.result.user_idx);
             }
         } catch (e: unknown) {
             this.result = "InternalServerError";

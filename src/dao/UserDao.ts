@@ -5,8 +5,6 @@ import User from "@src/models/UserModel";
 import LogService from "@src/utils/LogService";
 import Dao from "@src/dao/Dao";
 import { AllStrictReqData, AuthReqData } from "@src/vo/auth/services/reqData";
-import KafkaDao from "@src/dao/KafkaDao";
-import KafkaData from "@src/vo/auth/services/kafkaData";
 
 const logger = LogService.getInstance();
 
@@ -32,7 +30,7 @@ class UserDao extends Dao {
         try {
             result = await User.findOne({
                 where: {
-                    id: data.id
+                    user_id: data.user_id
                 }
             });
         } catch (err) {
@@ -52,7 +50,7 @@ class UserDao extends Dao {
         try {
             result = await User.findOne({
                 where: {
-                    idx: decoded.idx
+                    user_idx: decoded.user_idx
                 }
             });
         } catch (err) {
@@ -69,8 +67,7 @@ class UserDao extends Dao {
         params
     }: AuthReqData): Promise<User | string | null | undefined> {
         let newUser: User | null = null;
-        console.log(data.pwd);
-        data.pwd = await argon2.hash(data.pwd);
+        data.password = await argon2.hash(data.password);
         try {
             newUser = await User.create(data);
         } catch (err) {
@@ -110,18 +107,9 @@ class UserDao extends Dao {
         try {
             deleteMember = await User.destroy({
                 where: {
-                    idx: decoded.idx
+                    user_idx: decoded.user_idx
                 }
             });
-            // const sendData: KafkaData = {
-            //     status: !deleteMember ? "Fail" : "Success",
-            //     data: { email: decoded.email }
-            // };
-            // await KafkaDao.getInstance().sendMessage(
-            //     "userMemberDelete",
-            //     "userMemberDelete",
-            //     sendData
-            // );
         } catch (err) {
             logger.error(err);
             if (err instanceof ValidationError) return `BadRequest`;
