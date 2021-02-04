@@ -1,4 +1,5 @@
 import { Router } from "express";
+import passport from "passport";
 import SignupController from "@src/controllers/services/user/SignupController";
 import SignInController from "@src/controllers/services/user/SigninController";
 import LogoutController from "@src/controllers/services/user/LogoutController";
