@@ -32,7 +32,7 @@ class UserDao extends Dao {
         try {
             result = await User.findOne({
                 where: {
-                    email: data.email
+                    id: data.id
                 }
             });
         } catch (err) {
@@ -52,7 +52,7 @@ class UserDao extends Dao {
         try {
             result = await User.findOne({
                 where: {
-                    email: decoded.email
+                    idx: decoded.idx
                 }
             });
         } catch (err) {
@@ -69,7 +69,6 @@ class UserDao extends Dao {
         params
     }: AuthReqData): Promise<User | string | null | undefined> {
         let newUser: User | null = null;
-        console.log(data);
         data.pwd = await argon2.hash(data.pwd);
         try {
             newUser = await User.create(data);
@@ -119,7 +118,7 @@ class UserDao extends Dao {
         try {
             deleteMember = await User.destroy({
                 where: {
-                    email: decoded.email
+                    idx: decoded.idx
                 }
             });
             // const sendData: KafkaData = {
