@@ -27,7 +27,6 @@ class SigninController extends Controller {
     ): Promise<void> {
         try {
             this.result = await UserService.findSignIn(req);
-            console.log(this.result);
             if (typeof this.result !== "string") {
                 this.accessToken = await JwtService.createAccessToken(
                     this.result.idx

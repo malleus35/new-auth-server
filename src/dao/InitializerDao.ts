@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import User from "@src/models/UserModel";
 import AuthDBManager from "@src/models/AuthDBManager";
 import Dao from "@src/dao/Dao";

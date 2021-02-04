@@ -15,7 +15,6 @@ const serviceReturn = {
                     return "InternalServerError";
                 case null:
                     return "CannotFindItem";
-                // return "UnexpectedError";
                 default:
                     return result;
             }
@@ -40,7 +39,7 @@ const serviceReturn = {
                         false
                     )
                         return "WrongPassword";
-                    else return "Success";
+                    else return result;
             }
         } catch (e) {
             console.log(e);

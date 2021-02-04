@@ -1,5 +1,4 @@
 import { Router } from "express";
-import passport from "passport";
 import SignupController from "@src/controllers/services/user/SignupController";
 import SignInController from "@src/controllers/services/user/SigninController";
 import LogoutController from "@src/controllers/services/user/LogoutController";
@@ -13,7 +12,6 @@ const router = Router();
 router.post("/", new SignupController().excute());
 
 router.post("/signin", new SignInController().excute());
-
 router.post(
     "/logout",
     new JwtVerifyAccessController().excute(),

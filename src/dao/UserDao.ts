@@ -69,18 +69,10 @@ class UserDao extends Dao {
         params
     }: AuthReqData): Promise<User | string | null | undefined> {
         let newUser: User | null = null;
+        console.log(data.pwd);
         data.pwd = await argon2.hash(data.pwd);
         try {
             newUser = await User.create(data);
-            // const sendData: KafkaData = {
-            //     status: !newUser ? "Fail" : "Success",
-            //     data: { email: data.email }
-            // };
-            // await KafkaDao.getInstance().sendMessage(
-            //     "userMemberCreate",
-            //     "userMemberCreate",
-            //     sendData
-            // );
         } catch (err) {
             logger.error(err);
             if (err instanceof UniqueConstraintError) return `AlreadyExistItem`;
