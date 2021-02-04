@@ -1,12 +1,12 @@
 import jwt, { TokenExpiredError } from "jsonwebtoken";
 
 class JwtService {
-    static async createAccessToken(email): Promise<string> {
+    static async createAccessToken(idx: number): Promise<string> {
         const payload = {
-            email
+            idx
         };
         const options = {
-            expiresIn: "1h"
+            expiresIn: "12h"
         };
         const token = await jwt.sign(
             payload,

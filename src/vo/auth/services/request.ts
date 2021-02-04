@@ -1,7 +1,7 @@
 import { Request } from "express";
 
 interface StrictDecoded {
-    email: string;
+    idx: number;
 }
 interface StrictRequest extends Request {
     decoded: StrictDecoded;

@@ -7,11 +7,11 @@ import JwtService from "@src/services/middlewares/JwtService";
 import StrictRequest from "@src/vo/auth/services/request";
 
 class TokenSigninController extends Controller {
-    private decodedPayload: string | undefined;
+    private decodedPayload: number | undefined;
     private accessToken: string | object | null;
     constructor() {
         super();
-        this.decodedPayload = "";
+        this.decodedPayload = -1;
         this.accessToken = "";
     }
 
@@ -21,7 +21,7 @@ class TokenSigninController extends Controller {
         next: NextFunction
     ): Promise<void> {
         try {
-            this.decodedPayload = req.decoded.email;
+            this.decodedPayload = req.decoded.idx;
             this.accessToken = await JwtService.createAccessToken(
                 this.decodedPayload
             );

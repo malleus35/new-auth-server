@@ -45,7 +45,7 @@ class TokenDao {
             this.db.endConnection();
         }
     }
-    async save(key: string, value: string): Promise<string | number> {
+    async save(key: number, value: string): Promise<string | number> {
         this.connect();
         if (this.db === undefined || this.setAsync === undefined) {
             throw Error("Connect Redis Fail!");
@@ -63,7 +63,7 @@ class TokenDao {
             return result;
         }
     }
-    async find(key: string): Promise<string> {
+    async find(key: number): Promise<string> {
         this.connect();
         if (this.db === undefined || this.getAsync === undefined) {
             throw Error("Connect Redis Fail!");
