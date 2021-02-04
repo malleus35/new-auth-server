@@ -12,7 +12,10 @@ const router = Router();
 
 router.post("/", new SignupController().excute());
 
-router.post("/signin", new SignInController().excute());
+router.post("/signin/local", new SignInController().excute());
+router.post("/signin/google", new SignInController().excute());
+router.post("/signin/kakao", new SignInController().excute());
+
 router.post(
     "/logout",
     new JwtVerifyAccessController().excute(),

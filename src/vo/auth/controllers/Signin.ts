@@ -1,6 +1,6 @@
 export namespace SignInTypes {
     export interface SignInBody {
-        email: string;
+        id: string;
         pwd: string;
     }
 }

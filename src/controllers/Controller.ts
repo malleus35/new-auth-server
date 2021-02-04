@@ -2,12 +2,12 @@ import { NextFunction, Request, Response } from "express";
 
 abstract class Controller {
     protected controlFunction: any;
-    protected abstract async doService(
+    protected abstract doService(
         req: Request,
         res: Response,
         next: NextFunction
     ): Promise<void>;
-    protected abstract async doResolve(
+    protected abstract doResolve(
         req: Request,
         res: Response,
         next: NextFunction

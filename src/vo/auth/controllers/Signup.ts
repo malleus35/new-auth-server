@@ -1,10 +1,8 @@
 export namespace SignUpTypes {
     export interface SignUpBody {
-        email: string;
+        idx: number;
+        id: string;
         pwd: string;
         name: string;
-        // grade: number;
-        // school: string;
-        stdNum: string;
     }
 }
