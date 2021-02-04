@@ -1,9 +1,9 @@
 import jwt, { TokenExpiredError } from "jsonwebtoken";
 
 class JwtService {
-    static async createAccessToken(idx: number): Promise<string> {
+    static async createAccessToken(user_idx: number): Promise<string> {
         const payload = {
-            idx
+            user_idx
         };
         const options = {
             expiresIn: "12h"
