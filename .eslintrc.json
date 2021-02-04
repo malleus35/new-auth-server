@@ -23,6 +23,12 @@
     "rules": {},
     "settings": {
         "import/resolver": {
+            "alias": {
+                "map": [
+                    ["@src", "./src"],
+                    ["@test", "./test"]
+				]
+            },
             "node": {
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
             }

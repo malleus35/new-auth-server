@@ -62,7 +62,8 @@
     "paths": {
       "@src/*": ["src/*"],
       "@env/*": ["envs/*"],
-      "@log/*": ["log/*"]
+      "@log/*": ["log/*"],
+      "@test/*": ["test/*"]
 
     },
     /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
@@ -95,6 +96,7 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "test/**/*"
   ]
 }

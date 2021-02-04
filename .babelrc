@@ -7,6 +7,17 @@
                 "allowNamespaces": true
             }
         ],
-        "@babel/plugin-transform-runtime"
+        "@babel/plugin-transform-runtime",
+        [
+            "module-resolver",
+            {
+                "root": ["./"],
+                "alias": {
+                "@src": "./src",
+                "@env": "./envs",
+                "@test": "./test"
+                }
+            }
+        ]
     ]
 }
