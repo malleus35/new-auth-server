@@ -5,12 +5,16 @@ import Controller from "@src/controllers/Controller";
 import resTypes from "@src/utils/resTypes";
 import JwtService from "@src/services/middlewares/JwtService";
 import StrictRequest from "@src/vo/auth/services/request";
+import User from "@src/models/UserModel";
+import UserService from "@src/services/UserService";
 
 class TokenSigninController extends Controller {
+    private user: User | string;
     private decodedPayload: number | undefined;
     private accessToken: string | object | null;
     constructor() {
         super();
+        this.user = "";
         this.decodedPayload = -1;
         this.accessToken = "";
     }
@@ -21,6 +25,7 @@ class TokenSigninController extends Controller {
         next: NextFunction
     ): Promise<void> {
         try {
+            this.user = await UserService.findOne(req);
             this.decodedPayload = req.decoded.user_idx;
             this.accessToken = await JwtService.createAccessToken(
                 this.decodedPayload
@@ -35,7 +40,7 @@ class TokenSigninController extends Controller {
         res: Response,
         next: NextFunction
     ): Promise<void> {
-        resTypes.successRes(res, "Login");
+        resTypes.successRes(res, "Login", this.user);
     }
 }
 

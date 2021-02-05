@@ -8,6 +8,7 @@ services:
             - ./envs/.env.production
         networks:
             - auth
+            - pool
 
     auth-redis:
         image: "redis:alpine"
@@ -17,9 +18,13 @@ services:
             - "auth_redis_data:/data"
         networks:
             - auth
+            - pool
 
 networks:
     auth:
+        external: true
+        driver: bridge
+    pool:
         external: true
         driver: bridge
 
